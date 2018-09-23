@@ -46,22 +46,6 @@ static void vector_memory_resize(vector *v, size_t new_cap)
 	}
 }
 
-
-
-static inline void *vector_memory_alloc(vector *v, size_t size)
-{
-	VECTOR_CHECK_RETURN_VALUE(v, NULL);
-	size_t type_size = v->v_priv->v_type_size;
-	size_t num = size / type_size;
-	if (size <= 0)
-	{
-		return NULL;
-	}
-	void *ptr = calloc(num, type_size);
-	VECTOR_CHECK_RETURN_VALUE(ptr, NULL);
-	return ptr;
-}
-
 static int vector_get_value(vector *v, size_t pos, va_list list)
 {
 	size_t type_size = v->v_priv->v_type_size;
