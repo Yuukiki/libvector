@@ -8,7 +8,6 @@
 typedef uint8_t vector_type_id;
 typedef struct vector vector;
 typedef struct vector_private vector_private;
-typedef struct vector_resize_t vector_resize_t;
 struct vector {
 	vector_private *v_priv;
 	int (*at) (vector *v, size_t pos, ...);
