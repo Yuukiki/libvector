@@ -1,8 +1,15 @@
-LIBNAME := libvector
+LIBNAME := libvector.so
 
+ifneq ($(OS), Windows_NT)
 CC ?= gcc
 AR ?= ar
 RANLIB ?= ranlib
+else
+LIBNAME := libvector.dll
+CC := gcc
+AR := ar
+RANLIB := ranlib
+endif
 CFLAGS += -Werror -Wall -Wextra -g
 CPPFLAGS += -Iinclude
 LDFLAGS += -L. -lvector -Wl,-rpath,$(PWD)
@@ -10,7 +17,7 @@ LDFLAGS += -L. -lvector -Wl,-rpath,$(PWD)
 all: shared_lib
 
 shared_lib:
-	$(CC) -shared -fPIC -o $(LIBNAME).so vector.c $(CFLAGS) $(CPPFLAGS)
+	$(CC) -shared -fPIC -o $(LIBNAME) vector.c $(CFLAGS) $(CPPFLAGS)
 
 static_lib:
 	$(CC) -c vector.c $(CFLAGS) $(CPPFLAGS)
