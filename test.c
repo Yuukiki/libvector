@@ -12,7 +12,7 @@ int main(void)
 #ifdef _WIN64
 	printf("The capacity of the vector is %I64u\n", v->capacity(v));
 #else
-	printf("The capacity of the vector is %I32u\n", v->capacity(v));
+	printf("The capacity of the vector is %I32lu\n", v->capacity(v));
 #endif
 	int y = 10;
 	v->push_back(v, y);

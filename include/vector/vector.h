@@ -27,6 +27,7 @@ struct vector {
 	int (*pop_back) (vector *v);
 	int (*resize) (vector *v, size_t count, ...);
 	void (*destroy) (vector *v);
+	void (*shrink_to_fit) (vector *v);
 };
 vector *vector_create(vector_type_id type, size_t size);
 #endif /* _VECTOR_VECTOR_H_ */

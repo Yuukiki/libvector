@@ -31,4 +31,5 @@ static int vector_push_back(vector *v, ...);
 static int vector_pop_back(vector *v);
 static int vector_resize(vector *v, size_t count, ...);
 static void vector_destroy(vector *v);
+static void vector_shrink_to_fit(vector *v);
 #endif /* _VECTOR_VECTOR_PRIVATE_H_ */

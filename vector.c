@@ -434,6 +434,7 @@ vector *vector_create(vector_type_id type, size_t size)
 	v->pop_back = vector_pop_back;
 	v->resize = vector_resize;
 	v->destroy = vector_destroy;
+	v->shrink_to_fit = vector_shrink_to_fit;
 	return v;
 }
 
@@ -680,4 +681,10 @@ static void vector_destroy(vector *v)
 	CONDITIONAL_FREE(v->v_priv->v_ptr);
 	CONDITIONAL_FREE(v->v_priv);
 	CONDITIONAL_FREE(v);
+}
+
+static void vector_shrink_to_fit(vector *v)
+{
+	VECTOR_CHECK(v);
+	vector_memory_resize(v, v->v_priv->v_size);
 }
